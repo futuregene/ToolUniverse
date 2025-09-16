@@ -2598,7 +2598,7 @@ def get_joint_associated_diseases_by_HPO_ID_list(
     limit: int,
     offset: int
 ) -> dict:
-    return engine.run_one_function({
+    diseases = engine.run_one_function({
         "name": "get_joint_associated_diseases_by_HPO_ID_list",
         "arguments": {
             "HPO_ID_list": HPO_ID_list,
@@ -2606,6 +2606,7 @@ def get_joint_associated_diseases_by_HPO_ID_list(
             "offset": offset
         }
     })
+    return {"associated_diseases": diseases}
 
 
 @mcp.tool()
